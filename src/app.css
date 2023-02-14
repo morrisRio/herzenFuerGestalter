@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'AtlasGrotesk';
+	src: url('fonts/AtlasGrotesk-Regular-Web.woff') format('woff');
+	font-weight: regular;
+}
+
+@font-face {
+	font-family: 'AtlasGrotesk';
+	src: url('fonts/AtlasGrotesk-Regular-Web.woff2') format('woff2');
+	font-weight: regular;
+}

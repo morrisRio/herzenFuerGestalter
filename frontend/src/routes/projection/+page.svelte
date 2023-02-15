@@ -5,8 +5,8 @@
 
 	let hearts = [];
 
-	const duration = 3000;
-	const speed = 1;
+	const duration = 3500;
+	const speed = 1.4;
 
 	function generateHeart(x, y, xBound, xStart, scale) {
 		console.log('generate heart');
@@ -66,6 +66,21 @@
 				Math.random() * 2, //start direction
 				1 + Math.random() * 2 //scale
 			);
+
+			generateHeart(
+				windowWidth * Math.random(), //x-start
+				windowHeight - 200 + Math.random() * 20, //y-start
+				20, //left-right swiggle
+				Math.random() * 2, //start direction
+				1 + Math.random() * 2 //scale
+			);
+			generateHeart(
+				windowWidth * Math.random(), //x-start
+				windowHeight - 200 + Math.random() * 20, //y-start
+				20, //left-right swiggle
+				Math.random() * 2, //start direction
+				1 + Math.random() * 2 //scale
+			);
 		});
 	};
 	if (browser) {
@@ -90,32 +105,32 @@
 
 <!-- <h1>Herzen für Gestaltung</h1> -->
 <img src="HfG-Logo-White.svg" alt="Logo der HfG Schwäbisch Gmünd" class="logo" />
-<img src="qrcode.svg" alt="QR Code" class="qrcode" />
+
+<div class="qrcode">
+	<img src="qrcode.svg" alt="QR Code" />
+
+	<p>Scanne den QR-Code,<br /> um Liebe zu verteilen.</p>
+</div>
+
+<p class="spreadlove">#valentinstag</p>
 
 {#each hearts as heart}
-	<img
-		src="./heart.svg"
-		alt="herzFuerGestalter"
-		class="heart-img"
-		style={`position: absolute; top: ${heart.y}px; left: ${heart.x}px; scale: ${heart.scale}`}
-	/>
+	<div style={`opacity: ${heart.time / duration}`}>
+		<img
+			src="./heart.svg"
+			alt="herzFuerGestalter"
+			class="heart-img"
+			style={`position: absolute; top: ${heart.y}px; left: ${heart.x}px; scale: ${heart.scale}`}
+		/>
+	</div>
 {/each}
 
 <style>
-	@keyframes heartfade {
-		0% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0;
-		}
-	}
 	.heart-img {
 		z-index: 999;
 		height: 50px;
 		width: 50px;
 		position: absolute;
-		animation: heartfade 6s linear;
 	}
 	:global(body) {
 		background: black;
@@ -133,5 +148,15 @@
 		float: right;
 		padding-top: 3%;
 		padding-right: 4%;
+		font-size: 24px;
+	}
+
+	.spreadlove {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 120px;
+		font-weight: bold;
 	}
 </style>

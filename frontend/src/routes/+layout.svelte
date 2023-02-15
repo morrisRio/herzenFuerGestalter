@@ -8,7 +8,7 @@
 
 <style>
 	:global(body, *) {
-		font-family: AtlasGrotesk;
+		font-family: AtlasGrotesk, Helvetica, Arial, sans-serif;
 	}
 
 	:global(html, body) {

@@ -76,10 +76,10 @@
 	.button p {
 		position: absolute;
 		z-index: 200;
-		top: 42%;
+		top: 38%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		font-size: 36px;
+		font-size: 24px;
 		color: white;
 	}
 

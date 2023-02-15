@@ -12,6 +12,7 @@ COPY vite.config.js .
 
 # all folders needed for the build
 COPY src src/
+COPY static static/
 
 RUN npm install --frozen-lockfile
 

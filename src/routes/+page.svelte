@@ -5,8 +5,8 @@
 
 	let hearts = [];
 
-	const duration = 3000;
-	const speed = 1;
+	const duration = 5000;
+	const speed = 1.5;
 
 	function generateHeart(x, y, xBound, xStart, scale) {
 		console.log('generate heart');
@@ -56,43 +56,51 @@
 
 {#if browser}
 	<button
-		on:click={() =>
+		on:click={() => {
 			generateHeart(
 				windowWidth * Math.random(), //x-start
-				windowHeight - 200 + Math.random() * 20, //y-start
+				windowHeight - 200 + Math.random() * 100, //y-start
 				20, //left-right swiggle
 				Math.random() * 2, //start direction
 				1 + Math.random() * 2 //scale
-			)}>ADD</button
+			);
+			generateHeart(
+				windowWidth * Math.random(), //x-start
+				windowHeight - 200 + Math.random() * 100, //y-start
+				20, //left-right swiggle
+				Math.random() * 2, //start direction
+				1 + Math.random() * 2 //scale
+			);
+			generateHeart(
+				windowWidth * Math.random(), //x-start
+				windowHeight - 200 + Math.random() * 100, //y-start
+				20, //left-right swiggle
+				Math.random() * 2, //start direction
+				1 + Math.random() * 2 //scale
+			);
+		}}>ADD</button
 	>
 {/if}
 
 <h1>Herzen für Gestaltung</h1>
 
 {#each hearts as heart}
-	<img
-		src="./openmoji-heart.svg"
-		alt="herzFuerGestalter"
-		class="heart-img"
-		style={`position: absolute; top: ${heart.y}px; left: ${heart.x}px; scale: ${heart.scale}`}
-	/>
+	<div style={`opacity: ${heart.time / duration}`}>
+		<img
+			src="./openmoji-heart.svg"
+			alt="herzFuerGestalter"
+			class="heart-img"
+			style={`position: absolute; top: ${heart.y}px; left: ${heart.x}px; scale: ${heart.scale}`}
+		/>
+	</div>
 {/each}
 
 <style>
-	@keyframes heartfade {
-		0% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0;
-		}
-	}
 	.heart-img {
 		z-index: 999;
 		height: 50px;
 		width: 50px;
 		position: absolute;
-		animation: heartfade 6s linear;
 	}
 	:global(body) {
 		background: black;
